@@ -1,6 +1,7 @@
 const express = require('express'); // Importar el módulo express
 const conectarDB = require('./config/db'); // Importar la función para conectar a la base de datos
 const authRoutes = require('./routes/authRoutes'); // Importar las rutas de autenticación
+const productosRoutes = require('./routes/productosRoutes'); // Importar rutas de productos
 
 // Conectar a la base de datos
 conectarDB();
@@ -15,6 +16,9 @@ app.use(express.json());
 // Usar rutas de autenticación
 // Todas las rutas que comienzan con '/api/auth' utilizarán las definiciones en authRoutes
 app.use('/api/auth', authRoutes);
+
+// Rutas de productos
+app.use('/api', productosRoutes); // Usar rutas de productos
 
 // Configurar el puerto en el que escuchará el servidor
 const PORT = 5000;
